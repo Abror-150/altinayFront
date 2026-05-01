@@ -1,0 +1,89 @@
+import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { products } from "@/lib/products";
+import { useI18n, formatPrice } from "@/lib/i18n";
+import { Button } from "@/components/ui/button";
+import { useCart } from "@/lib/cart";
+import { Minus, Plus, ArrowLeft, ShoppingBag } from "lucide-react";
+import { useState } from "react";
+import { toast } from "sonner";
+
+export const Route = createFileRoute("/products/$id")({
+  component: ProductDetail,
+  notFoundComponent: () => (
+    <div className="container mx-auto px-4 py-20 text-center">
+      <h1 className="text-3xl font-display font-bold mb-4">404</h1>
+      <Link to="/products" className="text-primary hover:underline">Mahsulotlarga qaytish</Link>
+    </div>
+  ),
+  loader: ({ params }) => {
+    const product = products.find((p) => p.id === params.id);
+    if (!product) throw notFound();
+    return { product };
+  },
+});
+
+function ProductDetail() {
+  const { product } = Route.useLoaderData();
+  const { lang, t } = useI18n();
+  const { addItem } = useCart();
+  const [qty, setQty] = useState(1);
+
+  const total = product.price * qty;
+
+  return (
+    <div className="container mx-auto px-4 py-12">
+      <Link to="/products" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary mb-6">
+        <ArrowLeft className="w-4 h-4" /> {t("product.back")}
+      </Link>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16">
+        <div className="rounded-3xl overflow-hidden bg-muted aspect-square shadow-[var(--shadow-warm)]">
+          <img src={product.image} alt={product.name[lang]} width={1024} height={1024} className="w-full h-full object-cover" />
+        </div>
+
+        <div className="flex flex-col">
+          <h1 className="text-3xl md:text-4xl font-display font-bold mb-4">{product.name[lang]}</h1>
+          <p className="text-muted-foreground text-base leading-relaxed mb-6">{product.description[lang]}</p>
+
+          <div className="rounded-2xl bg-secondary/50 p-6 mb-6 border border-border">
+            <div className="text-sm text-muted-foreground mb-1">{t("product.price")}</div>
+            <div className="text-3xl font-display font-bold text-accent">{formatPrice(total, lang)}</div>
+          </div>
+
+          <div className="mb-6">
+            <div className="text-sm font-medium mb-2">{t("product.qty")}</div>
+            <div className="inline-flex items-center rounded-xl border border-border overflow-hidden">
+              <button
+                onClick={() => setQty((q) => Math.max(1, q - 1))}
+                className="w-12 h-12 flex items-center justify-center hover:bg-muted transition-colors"
+                aria-label="Decrease"
+              >
+                <Minus className="w-4 h-4" />
+              </button>
+              <div className="w-14 text-center font-bold text-lg">{qty}</div>
+              <button
+                onClick={() => setQty((q) => q + 1)}
+                className="w-12 h-12 flex items-center justify-center hover:bg-muted transition-colors"
+                aria-label="Increase"
+              >
+                <Plus className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+
+          <Button
+            size="lg"
+            className="h-12 text-base shadow-[var(--shadow-warm)]"
+            onClick={() => {
+              addItem(product.id, qty);
+              toast.success(t("product.added"));
+            }}
+          >
+            <ShoppingBag className="w-4 h-4 mr-2" />
+            {t("product.add")}
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
+}
