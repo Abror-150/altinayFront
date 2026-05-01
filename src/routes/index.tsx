@@ -1,9 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useI18n } from "@/lib/i18n";
 import { Button } from "@/components/ui/button";
-import { featuredProducts } from "@/lib/products";
+import { fetchProducts, type Product } from "@/lib/products";
 import { ProductCard } from "@/components/ProductCard";
 import { ArrowRight, Award, Hand, Leaf, Sparkles } from "lucide-react";
+import { useState, useEffect } from "react";
 import heroImg from "@/assets/hero-carpet.jpg";
 
 export const Route = createFileRoute("/")({
@@ -12,6 +13,13 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   const { t } = useI18n();
+  const [featured, setFeatured] = useState<Product[]>([]);
+
+  useEffect(() => {
+    fetchProducts()
+      .then((products) => setFeatured(products.slice(0, 3)))
+      .catch(() => {});
+  }, []);
 
   const features = [
     { icon: Hand, t: "home.why.1.t", d: "home.why.1.d" },
@@ -26,7 +34,13 @@ function Index() {
       {/* Hero */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0">
-          <img src={heroImg} alt="" className="w-full h-full object-cover" width={1920} height={1080} />
+          <img
+            src={heroImg}
+            alt=""
+            className="w-full h-full object-cover"
+            width={1920}
+            height={1080}
+          />
           <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/40 dark:from-background dark:via-background/90 dark:to-background/50" />
         </div>
         <div className="relative container mx-auto px-4 py-24 md:py-36 max-w-3xl">
@@ -40,7 +54,10 @@ function Index() {
             {t("hero.subtitle")}
           </p>
           <Link to="/products">
-            <Button size="lg" className="text-base h-12 px-8 shadow-[var(--shadow-warm)] hover:scale-105 transition-transform">
+            <Button
+              size="lg"
+              className="text-base h-12 px-8 shadow-[var(--shadow-warm)] hover:scale-105 transition-transform"
+            >
               {t("hero.cta")} <ArrowRight className="ml-2 w-4 h-4" />
             </Button>
           </Link>
@@ -54,9 +71,12 @@ function Index() {
           <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full" />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {featuredProducts.map((p) => (
-            <ProductCard key={p.id} product={p} />
-          ))}
+          {featured.length === 0
+            ? // Skeleton loading
+              Array.from({ length: 3 }).map((_, i) => (
+                <div key={i} className="rounded-2xl bg-muted animate-pulse aspect-[3/4]" />
+              ))
+            : featured.map((p) => <ProductCard key={p.id} product={p} />)}
         </div>
       </section>
 
@@ -64,10 +84,17 @@ function Index() {
       <section className="container mx-auto px-4 py-20">
         <div className="rounded-3xl bg-gradient-to-br from-secondary to-muted p-8 md:p-14 uzbek-pattern">
           <div className="max-w-3xl">
-            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">{t("home.about.title")}</h2>
-            <p className="text-base md:text-lg text-muted-foreground mb-6 leading-relaxed">{t("home.about.text")}</p>
+            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
+              {t("home.about.title")}
+            </h2>
+            <p className="text-base md:text-lg text-muted-foreground mb-6 leading-relaxed">
+              {t("home.about.text")}
+            </p>
             <Link to="/about">
-              <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
+              <Button
+                variant="outline"
+                className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+              >
                 {t("home.about.more")} <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
             </Link>
@@ -78,7 +105,9 @@ function Index() {
       {/* Why */}
       <section className="container mx-auto px-4 py-20">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-display font-bold mb-3">{t("home.why.title")}</h2>
+          <h2 className="text-3xl md:text-4xl font-display font-bold mb-3">
+            {t("home.why.title")}
+          </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full" />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -102,7 +131,9 @@ function Index() {
         <div className="rounded-3xl bg-primary text-primary-foreground p-8 md:p-14 relative overflow-hidden">
           <div className="absolute inset-0 opacity-10 pattern-border" />
           <div className="relative">
-            <h2 className="text-3xl md:text-4xl font-display font-bold mb-8 text-center">{t("home.awards.title")}</h2>
+            <h2 className="text-3xl md:text-4xl font-display font-bold mb-8 text-center">
+              {t("home.awards.title")}
+            </h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {awards.map((a) => (
                 <div key={a} className="text-center">

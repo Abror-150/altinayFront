@@ -24,7 +24,7 @@ export function ProductCard({ product }: { product: Product }) {
         <h3 className="font-display font-semibold text-lg mb-1 group-hover:text-primary transition-colors">
           {product.name[lang]}
         </h3>
-        <p className="text-sm text-muted-foreground line-clamp-2 mb-3">{product.description[lang]}</p>
+        <p className="text-sm text-muted-foreground line-clamp-2 mb-3">{product.shortDesc[lang]}</p>
         <div className="text-accent font-bold text-lg">{formatPrice(product.price, lang)}</div>
       </div>
     </Link>

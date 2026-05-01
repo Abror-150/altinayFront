@@ -149,6 +149,7 @@ export const dict: Dict = {
 
   "contact.title": { uz: "Biz bilan bog‘laning", en: "Contact Us", ru: "Свяжитесь с нами" },
   "contact.name": { uz: "Ismingiz", en: "Your Name", ru: "Ваше имя" },
+  "contact.email": { uz: "Emailingiz", en: "Your Email", ru: "Ваше email" },
   "contact.phone": { uz: "Telefon", en: "Phone", ru: "Телефон" },
   "contact.message": { uz: "Xabar", en: "Message", ru: "Сообщение" },
   "contact.send": { uz: "Yuborish", en: "Send", ru: "Отправить" },
