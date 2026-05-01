@@ -24,7 +24,7 @@ const schema = z.object({
   email: z.string().trim().email().optional().or(z.literal("")),
 });
 
-const BASE_URL = "http://138.2.146.136";
+const BASE_URL = "https://api.altinay.uz";
 
 export function OrderModal({
   open,

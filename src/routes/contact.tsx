@@ -26,7 +26,7 @@ const schema = z.object({
   email: z.string(),
 });
 
-const BASE_URL = "http://138.2.146.136";
+const BASE_URL = "https://api.altinay.uz";
 
 function ContactPage() {
   const { t } = useI18n();

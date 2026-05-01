@@ -13,7 +13,7 @@ export type Product = {
   image: string;
 };
 
-const BASE_URL = "http://138.2.146.136";
+const BASE_URL = "https://api.altinay.uz";
 
 export const mapApiProduct = (item: any): Product => ({
   id: item.id,
