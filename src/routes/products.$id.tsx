@@ -34,9 +34,16 @@ function ProductDetail() {
         if (!data) setError("Mahsulot topilmadi.");
         else setProduct(data);
       })
+
       .catch(() => setError("Mahsulotni yuklashda xatolik yuz berdi."))
       .finally(() => setLoading(false));
   }, [id]);
+  useEffect(() => {
+    if (product) {
+      console.log("VIDEO:", product.video);
+      console.log("IMAGE:", product.image);
+    }
+  }, [product]);
 
   if (loading) {
     return (
@@ -69,16 +76,35 @@ function ProductDetail() {
       </Link>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16">
-        <div className="rounded-3xl overflow-hidden bg-muted aspect-square shadow-[var(--shadow-warm)]">
-          <img
-            src={product.image}
-            alt={product.name[lang]}
-            width={1024}
-            height={1024}
-            className="w-full h-full object-cover"
-          />
+        {/* Chap tomon — rasm + video */}
+        <div className="flex flex-col gap-4">
+          <div className="rounded-3xl overflow-hidden bg-muted aspect-square shadow-[var(--shadow-warm)]">
+            <img
+              src={product.image}
+              alt={product.name[lang]}
+              width={1024}
+              height={1024}
+              className="w-full h-full object-cover"
+            />
+          </div>
+
+          {/* Video — faqat mavjud bo'lsa */}
+          {product.video && (
+            <div className="rounded-3xl overflow-hidden bg-muted shadow-[var(--shadow-warm)]">
+              <video
+                src={product.video}
+                controls
+                playsInline
+                poster={product.image}
+                className="w-full rounded-3xl"
+              >
+                Brauzeringiz videoni qo'llab-quvvatlamaydi.
+              </video>
+            </div>
+          )}
         </div>
 
+        {/* O'ng tomon — ma'lumotlar */}
         <div className="flex flex-col">
           <h1 className="text-3xl md:text-4xl font-display font-bold mb-4">{product.name[lang]}</h1>
           <p className="text-muted-foreground text-base leading-relaxed mb-6">

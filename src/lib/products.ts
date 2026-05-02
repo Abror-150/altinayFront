@@ -11,39 +11,48 @@ export type Product = {
   process: { en: string; uz: string; ru: string };
   price: number;
   image: string;
+  video?: string;
 };
 
 const BASE_URL = "https://api.altinay.uz";
 
-export const mapApiProduct = (item: any): Product => ({
-  id: item.id,
-  slug: item.id,
-  category: item.category ?? "carpet",
-  name: {
-    en: item.name_en ?? "",
-    uz: item.name_uz ?? "",
-    ru: item.name_ru ?? "",
-  },
-  shortDesc: {
-    en: item.description_en ?? "",
-    uz: item.description_uz ?? "",
-    ru: item.description_ru ?? "",
-  },
-  longDesc: {
-    en: item.description_en ?? "",
-    uz: item.description_uz ?? "",
-    ru: item.description_ru ?? "",
-  },
-  materials: { en: "", uz: "", ru: "" },
-  process: { en: "", uz: "", ru: "" },
-  price: parseFloat(item.price),
-  // image to'liq URL bo'lsa oladi, bo'lmasa BASE_URL qo'shadi
-  image: item.image
-    ? item.image.startsWith("http")
-      ? item.image
-      : `${BASE_URL}/images/${item.image}`
-    : "",
-});
+export const mapApiProduct = (item: any): Product => {
+  console.log("RAW VIDEO:", item.video);
+
+  return {
+    id: item.id,
+    slug: item.id,
+    category: item.category ?? "carpet",
+    name: {
+      en: item.name_en ?? "",
+      uz: item.name_uz ?? "",
+      ru: item.name_ru ?? "",
+    },
+    shortDesc: {
+      en: item.description_en ?? "",
+      uz: item.description_uz ?? "",
+      ru: item.description_ru ?? "",
+    },
+    longDesc: {
+      en: item.description_en ?? "",
+      uz: item.description_uz ?? "",
+      ru: item.description_ru ?? "",
+    },
+    materials: { en: "", uz: "", ru: "" },
+    process: { en: "", uz: "", ru: "" },
+    price: parseFloat(item.price),
+    image: item.image
+      ? item.image.startsWith("http")
+        ? item.image
+        : `${BASE_URL}/images/${item.image}`
+      : "",
+    video: item.video
+      ? item.video.startsWith("http")
+        ? item.video
+        : `${BASE_URL}/uploads/videos/${item.video}`
+      : undefined,
+  };
+};
 
 export const fetchProducts = async (): Promise<Product[]> => {
   const res = await fetch(`${BASE_URL}/product`);

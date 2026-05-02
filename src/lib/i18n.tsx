@@ -40,7 +40,11 @@ export const dict: Dict = {
     en: "Each carpet is woven by master artisans.",
     ru: "Каждый ковёр соткан опытными мастерами.",
   },
-  "home.why.2.t": { uz: "Tabiiy materiallar", en: "Natural materials", ru: "Натуральные материалы" },
+  "home.why.2.t": {
+    uz: "Tabiiy materiallar",
+    en: "Natural materials",
+    ru: "Натуральные материалы",
+  },
   "home.why.2.d": {
     uz: "Faqat tabiiy jun va o‘simlik bo‘yoqlari ishlatiladi.",
     en: "Only natural wool and plant-based dyes are used.",
@@ -53,11 +57,27 @@ export const dict: Dict = {
     ru: "Узоры и техники, сохранившиеся веками.",
   },
 
-  "home.awards.title": { uz: "Yutuqlar va mukofotlar", en: "Achievements & awards", ru: "Достижения и награды" },
+  "home.awards.title": {
+    uz: "Yutuqlar va mukofotlar",
+    en: "Achievements & awards",
+    ru: "Достижения и награды",
+  },
   "home.awards.1": { uz: "10+ yillik tajriba", en: "10+ years of experience", ru: "10+ лет опыта" },
-  "home.awards.2": { uz: "5000+ mamnun mijoz", en: "5000+ happy customers", ru: "5000+ довольных клиентов" },
-  "home.awards.3": { uz: "Xalqaro ko‘rgazmalar ishtirokchisi", en: "International exhibitions participant", ru: "Участник международных выставок" },
-  "home.awards.4": { uz: "Hunarmandchilik mukofoti g‘olibi", en: "Craftsmanship award winner", ru: "Лауреат премии ремёсел" },
+  "home.awards.2": {
+    uz: "5000+ mamnun mijoz",
+    en: "5000+ happy customers",
+    ru: "5000+ довольных клиентов",
+  },
+  "home.awards.3": {
+    uz: "Xalqaro ko‘rgazmalar ishtirokchisi",
+    en: "International exhibitions participant",
+    ru: "Участник международных выставок",
+  },
+  "home.awards.4": {
+    uz: "Hunarmandchilik mukofoti g‘olibi",
+    en: "Craftsmanship award winner",
+    ru: "Лауреат премии ремёсел",
+  },
 
   "products.title": { uz: "Barcha mahsulotlar", en: "All Products", ru: "Все товары" },
   "products.subtitle": {
@@ -109,38 +129,66 @@ export const dict: Dict = {
     ru: "С 2012 года мы занимаемся традиционным ковроткачеством и валянием войлока. Каждое изделие отражает узбекское мастерство. Мы получили множество наград и достижений.",
   },
 
-  "faq.title": { uz: "Ko‘p so‘raladigan savollar", en: "Frequently Asked Questions", ru: "Часто задаваемые вопросы" },
-  "faq.q1": { uz: "Qanday materiallar ishlatiladi?", en: "What materials are used?", ru: "Какие материалы используются?" },
+  "faq.title": {
+    uz: "Ko‘p so‘raladigan savollar",
+    en: "Frequently Asked Questions",
+    ru: "Часто задаваемые вопросы",
+  },
+  "faq.q1": {
+    uz: "Qanday materiallar ishlatiladi?",
+    en: "What materials are used?",
+    ru: "Какие материалы используются?",
+  },
   "faq.a1": {
     uz: "Faqat tabiiy qo‘y juni, paxta va o‘simlik bo‘yoqlari ishlatiladi.",
     en: "Only natural sheep wool, cotton, and plant-based dyes are used.",
     ru: "Используются только натуральная овечья шерсть, хлопок и растительные красители.",
   },
-  "faq.q2": { uz: "Mahsulotlar qo‘lda tayyorlanadimi?", en: "Are products handmade?", ru: "Изделия ручной работы?" },
+  "faq.q2": {
+    uz: "Mahsulotlar qo‘lda tayyorlanadimi?",
+    en: "Are products handmade?",
+    ru: "Изделия ручной работы?",
+  },
   "faq.a2": {
     uz: "Ha, barcha mahsulotlar tajribali ustalar tomonidan qo‘lda tayyorlanadi.",
     en: "Yes, all products are handmade by experienced master artisans.",
     ru: "Да, все изделия изготавливаются вручную опытными мастерами.",
   },
-  "faq.q3": { uz: "Yetkazib berish muddati qancha?", en: "What is the delivery time?", ru: "Сроки доставки?" },
+  "faq.q3": {
+    uz: "Yetkazib berish muddati qancha?",
+    en: "What is the delivery time?",
+    ru: "Сроки доставки?",
+  },
   "faq.a3": {
     uz: "Toshkent bo‘yicha 1-3 kun, viloyatlarga 3-7 kun.",
     en: "1–3 days within Tashkent, 3–7 days to other regions.",
     ru: "1–3 дня по Ташкенту, 3–7 дней в регионы.",
   },
-  "faq.q4": { uz: "Maxsus buyurtma qabul qilasizmi?", en: "Do you accept custom orders?", ru: "Принимаете ли индивидуальные заказы?" },
+  "faq.q4": {
+    uz: "Maxsus buyurtma qabul qilasizmi?",
+    en: "Do you accept custom orders?",
+    ru: "Принимаете ли индивидуальные заказы?",
+  },
   "faq.a4": {
     uz: "Ha, o‘lchov, rang va naqsh bo‘yicha individual buyurtmalar qabul qilinadi.",
     en: "Yes, custom orders by size, color, and pattern are accepted.",
     ru: "Да, принимаем индивидуальные заказы по размеру, цвету и узору.",
   },
-  "faq.q5": { uz: "Qanday buyurtma berish mumkin?", en: "How can I order?", ru: "Как сделать заказ?" },
+  "faq.q5": {
+    uz: "Qanday buyurtma berish mumkin?",
+    en: "How can I order?",
+    ru: "Как сделать заказ?",
+  },
   "faq.a5": {
     uz: "Mahsulotni savatga qo‘shing, so‘ng buyurtma shaklini to‘ldiring.",
     en: "Add a product to the cart and fill in the order form.",
     ru: "Добавьте товар в корзину и заполните форму заказа.",
   },
-  "faq.q6": { uz: "Qanday to‘lov usullari mavjud?", en: "What payment methods are available?", ru: "Какие способы оплаты?" },
+  "faq.q6": {
+    uz: "Qanday to‘lov usullari mavjud?",
+    en: "What payment methods are available?",
+    ru: "Какие способы оплаты?",
+  },
   "faq.a6": {
     uz: "Naqd, plastik karta, Click, Payme orqali to‘lov qabul qilinadi.",
     en: "Cash, bank cards, Click, and Payme payments are accepted.",
@@ -156,7 +204,11 @@ export const dict: Dict = {
   "contact.sent": { uz: "Xabar yuborildi", en: "Message sent", ru: "Сообщение отправлено" },
   "contact.info": { uz: "Aloqa ma’lumotlari", en: "Contact Info", ru: "Контактная информация" },
   "contact.address": { uz: "Manzil", en: "Address", ru: "Адрес" },
-  "contact.address.val": { uz: "Toshkent sh., Chilonzor t., 12-uy", en: "Tashkent, Chilanzar district, house 12", ru: "Ташкент, Чиланзарский р-н, д. 12" },
+  "contact.address.val": {
+    uz: "Shumanay tumani Monshakli MFY Mahallasi, O'zbekiston ko'chasi 125uy - yashovchi fuqaro NAUBETOVA ni qoldirining ALTINAY xx dan  ",
+    en: "Shumanay district, Monshakli MFY neighborhood, 125 Uzbekiston street - resident of NAUBETOVA, from ALTINAY xx",
+    ru: "Шуманайский район, микрорайон Моншакли МФЙ, улица Узбекистон 125 - жительница НАУБЕТОВА, с АЛТИНАЙ хх",
+  },
 
   "offer.title": { uz: "Ofertaning shartlari", en: "Offer Terms", ru: "Условия оферты" },
   "offer.text": {
@@ -170,10 +222,18 @@ export const dict: Dict = {
     en: "Traditional Uzbek carpets and felt",
     ru: "Традиционные узбекские ковры и войлок",
   },
-  "footer.rights": { uz: "Barcha huquqlar himoyalangan", en: "All rights reserved", ru: "Все права защищены" },
+  "footer.rights": {
+    uz: "Barcha huquqlar himoyalangan",
+    en: "All rights reserved",
+    ru: "Все права защищены",
+  },
 };
 
-const I18nContext = createContext<{ lang: Lang; setLang: (l: Lang) => void; t: (k: string) => string }>({
+const I18nContext = createContext<{
+  lang: Lang;
+  setLang: (l: Lang) => void;
+  t: (k: string) => string;
+}>({
   lang: "uz",
   setLang: () => {},
   t: (k) => k,
