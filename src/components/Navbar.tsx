@@ -36,7 +36,7 @@ export function Navbar() {
           <div className="w-9 h-9 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-primary-foreground font-display font-bold transition-transform group-hover:scale-110">
             G
           </div>
-          <span className="font-display font-bold text-lg hidden sm:inline">Gilam &amp; Kigiz</span>
+          <span className="font-display font-bold text-lg hidden sm:inline">Altinay.uz</span>
         </Link>
 
         <nav className="hidden md:flex items-center gap-1">
@@ -47,7 +47,9 @@ export function Navbar() {
                 key={l.to}
                 to={l.to}
                 className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
-                  active ? "text-primary bg-primary/10" : "text-foreground/70 hover:text-foreground hover:bg-muted"
+                  active
+                    ? "text-primary bg-primary/10"
+                    : "text-foreground/70 hover:text-foreground hover:bg-muted"
                 }`}
               >
                 {l.label}
@@ -87,7 +89,13 @@ export function Navbar() {
             </Button>
           </Link>
 
-          <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setOpen((o) => !o)} aria-label="Menu">
+          <Button
+            variant="ghost"
+            size="icon"
+            className="md:hidden"
+            onClick={() => setOpen((o) => !o)}
+            aria-label="Menu"
+          >
             {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
           </Button>
         </div>
